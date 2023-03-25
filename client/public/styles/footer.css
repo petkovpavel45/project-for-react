@@ -3,6 +3,7 @@
     text-align: center;
     padding-bottom: 30px;
     padding-top: 30px;
+    text-align: center;
 }
 
 #footer .contact-us {
@@ -15,10 +16,10 @@
 
 #footer .contacts-info {
     display: flex;
-    justify-content: center;
-    gap: 170px;
+    justify-content: space-evenly;
     align-items: center;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 #footer .contacts-info i {
@@ -27,6 +28,8 @@
     border-radius: 50%;
     border: 1px solid white;
     line-height: 3;
+    margin-right: 8px;
+
 
 }
 

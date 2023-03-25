@@ -36,6 +36,11 @@
     padding: 16px 0px;
 }
 
+#products .btn-cart {
+    all: unset;
+    cursor: pointer;
+}
+
 #products .fa-cart-shopping {
     border: 1px solid #060a36;
     border-radius: 100%;

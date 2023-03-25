@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Hero = () => {
   return (
     <section id="hero">
@@ -11,7 +13,7 @@ export const Hero = () => {
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi iste
           modi quod illo deleniti ratione!
         </p>
-        <button className="btn">READ MORE</button>
+        <Link to={'/products'} className="btn">READ MORE</Link>
       </div>
     </section>
   );

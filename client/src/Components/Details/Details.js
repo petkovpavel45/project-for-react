@@ -4,7 +4,7 @@ export const Details = () => {
       <h2 className="details-heading">Product Detail</h2>
       <div className="details-container">
         <div className="img-wrapper">
-          <img src="images/p1.png" alt="" className="details-img" />
+          <img src="../../../public/images/p1.png" alt="p1" className="details-img" />
         </div>
         <div className="details-info">
           <h3 className="details-title">Treadmill X784-K2</h3>

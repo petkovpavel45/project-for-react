@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from "react-router-dom";
 export const Register = () => {
   return (
     <section id="register">
@@ -78,9 +78,9 @@ export const Register = () => {
           <span>
             If you already have a profile please{" "}
             <i className="fa-solid fa-arrow-right"></i>
-            <a className="sign" href="#">
+            <Link className="sign" to="/login">
               Sign in
-            </a>
+            </Link>
           </span>
         </p>
       </form>
