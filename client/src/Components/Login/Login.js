@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const Login = () => {
+  const { onLoginSubmit } = useContext(AuthContext);
+  const { changeHandler, onSubmit, values } = useForm(onLoginSubmit, {
+    email: "",
+    password: "",
+  });
   return (
     <section id="login">
-      <form className="forms">
+      <form className="forms" method="POST" onSubmit={onSubmit}>
         <h2>Login</h2>
         <img src="images/profile.png" alt="profile" className="profile-img" />
         <div className="details-container">
@@ -14,9 +22,11 @@ export const Login = () => {
             id="email"
             placeholder="johndoe@gmail.com"
             className="profile-input"
+            value={values.email}
+            onChange={changeHandler}
           />
 
-          <p className="field">Email or Password is incorrect!</p>
+          {/* <p className="field">Email or Password is incorrect!</p> */}
         </div>
 
         <div className="details-container">
@@ -27,9 +37,11 @@ export const Login = () => {
             id="password"
             placeholder="**********"
             className="profile-input"
+            value={values.password}
+            onChange={changeHandler}
           />
 
-          <p className="field">Email or Password is incorrect!</p>
+          {/* <p className="field">Email or Password is incorrect!</p> */}
         </div>
 
         <input type="submit" value="LOGIN" className="btn" />
