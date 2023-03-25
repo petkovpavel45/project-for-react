@@ -1,0 +1,135 @@
+#cart {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 30px;
+    height: 100vh;
+    position: relative;
+    color: rgb(24, 23, 23);
+}
+
+#cart .cart-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#cart hr {
+    color: lightgray;
+}
+
+#cart .total-price {
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 80px;
+    font-style: italic;
+}
+
+#cart .order-btn {
+    all: unset;
+    display: block;
+    width: 80%;
+    text-align: center;
+    align-self: center;
+    color: white;
+    border: 1px solid #1376b1;
+    background-color: #1d85c2;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0px 0px 22px -4px rgba(0,0,0,0.7);
+    transition: 200ms linear;
+}
+
+#cart .order-btn:hover {
+    box-shadow: none;
+    background-color: #1376b1;
+}
+
+
+
+#cart .item-name {
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+#cart .item-desc {
+    margin-bottom: 12px;
+}
+
+#cart .item-price {
+    font-style: italic;
+    font-weight: 500;
+
+}
+
+#cart .trash {
+    display: block;
+    text-align: right;
+    cursor: unset;
+}
+
+#cart .fa-trash:hover {
+    color: red;
+    cursor: pointer;
+}
+
+#cart .item-info {
+    padding: 12px;
+}
+
+#cart .item-wrapper {
+    display: inline-block;
+    width: 60%;
+
+}
+
+#cart .item-img-wrapper {
+    width: 110px;
+    height: 110px;
+    display: inline-block;
+    margin-right: 40px;
+    vertical-align: top;
+}
+
+#cart .cart-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay-payment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+}
+
+.modal {
+    width: 450px;
+    position: fixed;
+    /* margin: auto; */
+    background-color: lightgray;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+    z-index: 30;
+    margin-top: 50px;
+    height: 100vh;
+    top: -7%;
+    right: 0%;
+}

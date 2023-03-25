@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main class="container">
+        <header id="header">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="logo" class="logo">
+            </div>
+            <ul class="nav-list" role='list'>
+                <li class="list"><a href="#">HOME</a></li>
+                <li class="list"><a href="#">ABOUT</a></li>
+                <li class="list"><a href="#">WHY US</a></li>
+
+                <li class="list"><a href="#">PRODUCTS</a></li>
+                <li class="list"><a href="#">CREATE PRODUCT</a></li>
+            </ul>
+            <ul class="user-info" role="list">
+                <li><a class="user" href=""><i class="fa-regular fa-user"></i></a>
+                    <div class="dropdown-user">
+                        <ul role="list">
+                            <li><a href="#">LOGIN</a></li>
+                            <li><a href="#">REGISTER</a></li>
+                            <!-- user login -->
+                            <li><a href="#">LOGOUT</a></li>
+                            <li><a href="#">PROFILE</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href=""><i class="fa-solid fa-magnifying-glass"></i></a></li>
+            </ul>
+        </header>
+        <section id="hero">
+            <div class="overlay"></div>
+            <div class="hero-img-container">
+                <img src="images/slider-bg.jpg" alt="" class="hero-img">
+            </div>
+            <div class="hero-card">
+                <h1 class="hero-title">BEST FITNESS EQUIPMENTS</h1>
+                <p class="hero-subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi iste modi
+                    quod illo deleniti ratione!</p>
+                <button class="btn">READ MORE</button>
+            </div>
+        </section>
+        <section id="about-us">
+            <div class="about-wrapper">
+                <div class="about-card">
+                    <h2 class="about-title">About Us</h2>
+                    <p class="about-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus dolorum
+                        minus qui corrupti adipisci odit obcaecati a. Nobis accusantium deserunt voluptate laboriosam
+                        quaerat voluptatem dolor suscipit voluptatibus aliquid, libero obcaecati consectetur nostrum at
+                        nam soluta architecto? Consequuntur autem ullam fugiat?</p>
+                </div>
+
+                <div class="about-img-wrapper">
+                    <img src="images/about-img.jpg" alt="" class="about-img">
+                </div>
+            </div>
+        </section>
+        <section id="why-us">
+            <h2 class="why-us-title">
+                WHY CHOOSE US
+            </h2>
+            <div class="cards">
+                <div class="card">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h3 class="card-title">FREE DELIVERY</h3>
+                    <p class="card-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam repellat
+                        error asperiores qui iure explicabo?</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-dolly"></i>
+                    <h3 class="card-title">EASY RETURN</h3>
+                    <p class="card-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam repellat
+                        error asperiores qui iure explicabo?</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3 class="card-title">24/7 Support</h3>
+                    <p class="card-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam repellat
+                        error asperiores qui iure explicabo?</p>
+                </div>
+            </div>
+        </section>
+        <section id="products">
+            <h2 class="products-title">PRODUCTS</h2>
+            <div class="no-items">
+                <p>There is no equipments in products</p>
+            </div>
+            <div class="products-cards">
+                <div class="product-card">
+                    <div class="img-wrapper">
+                        <img class="product-img" src="images/p1.png" alt="p1">
+                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <span class="ratings">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <h3 class="card-title">Gym Equipment</h3>
+                    <div class="price-details-wrapper">
+                        <p class="card-price">$140</p>
+                        <a href="#" class="btn btn-detail">DETAILS</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="img-wrapper">
+                        <img class="product-img" src="images/p2.png" alt="p1">
+                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <span class="ratings">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <h3 class="card-title">Gym Equipment</h3>
+                    <div class="price-details-wrapper">
+                        <p class="card-price">$100</p>
+                        <a href="#" class="btn btn-detail">DETAILS</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="img-wrapper">
+                        <img class="product-img" src="images/p3.png" alt="p1">
+                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <span class="ratings">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <h3 class="card-title">Gym Equipment</h3>
+                    <div class="price-details-wrapper">
+                        <p class="card-price">$120</p>
+                        <a href="#" class="btn btn-detail">DETAILS</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="img-wrapper">
+                        <img class="product-img" src="images/p4.png" alt="p1">
+                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <span class="ratings">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <h3 class="card-title">Gym Equipment</h3>
+                    <div class="price-details-wrapper">
+                        <p class="card-price">$90</p>
+                        <a href="#" class="btn btn-detail">DETAILS</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="img-wrapper">
+                        <img class="product-img" src="images/p5.png" alt="p1">
+                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <span class="ratings">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <h3 class="card-title">Gym Equipment</h3>
+                    <div class="price-details-wrapper">
+                        <p class="card-price">$150</p>
+                        <a href="#" class="btn btn-detail">DETAILS</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="img-wrapper">
+                        <img class="product-img" src="images/p6.png" alt="p1">
+                        <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
+                    <span class="ratings">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <h3 class="card-title">Gym Equipment</h3>
+                    <div class="price-details-wrapper">
+                        <p class="card-price">$190</p>
+                        <a href="#" class="btn btn-detail">DETAILS</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section id="profile">
+            <form class="profile-form forms">
+                <h3>My Profile</h3>
+                <img src="images/profile.png" alt="" class="profile-img">
+                <div class="details-container">
+                    <label for="email">Email:</label>
+                    <input class="profile-input" placeholder="johndoe@gmail.com" type="email" name="email" id="email">
+
+                    <p class="field">
+                        Email is not valid!
+                    </p>
+                </div>
+
+                <div class="details-container">
+                    <label for="username">Name:</label>
+                    <input class="profile-input" placeholder="johndoe32" type="text" name="username" id="username">
+
+                    <p class="field">
+                        Username must be at least 6 characters long!
+                    </p>
+                </div>
+
+                <div class="details-container">
+                    <label for="phoneNumber">Phone:</label>
+                    <input class="profile-input" type="number" placeholder="0123456789" name="phoneNumber"
+                        id="phoneNumber">
+
+                    <p class="field">
+                        Phone number must be 10 digits!
+                    </p>
+                </div>
+
+                <input type="submit" value="EDIT" id="edit" class="btn">
+            </form>
+        </section>
+        <section id="login">
+            <form class="forms">
+                <h2>Login</h2>
+                <img src="images/profile.png" alt="profile" class="profile-img">
+                <div class="details-container">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" class="profile-input">
+
+                    <p class="field">
+                        Email or Password is incorrect!
+                    </p>
+                </div>
+
+                <div class="details-container">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="**********" class="profile-input">
+
+                    <p class="field">
+                        Email or Password is incorrect!
+                    </p>
+                </div>
+
+                <input type="submit" value="LOGIN" class="btn">
+
+                <p>
+                    <span>If you don't have profile please <i class="fa-solid fa-arrow-right"></i><a class="sign"
+                            href="#">Sign up</a></span>
+                </p>
+            </form>
+        </section>
+        <section id="register">
+            <form class="register-form">
+                <h2>Register</h2>
+                <img src="images/profile.png" alt="profile" class="profile-img">
+                <div class="details-container">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="johndoe@gmail.com" class="profile-input">
+
+                    <p class="field">
+                        Please enter a valid email address!
+                    </p>
+                </div>
+
+                <div class="details-container">
+                    <label for="username">Username:</label>
+                    <input type="username" name="username" id="username" placeholder="johndoe32" class="profile-input">
+
+                    <p class="field">
+                        Username must be at least 6 characters long!
+                    </p>
+                </div>
+
+                <div class="details-container">
+                    <label for="phoneNumber">Phone:</label>
+                    <input class="profile-input" type="number" placeholder="0123456789" name="phoneNumber"
+                        id="phoneNumber">
+
+                    <p class="field">
+                        Phone number must be 10 digits!
+                    </p>
+                </div>
+
+                <div class="details-container">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="**********" class="profile-input">
+
+                    <p class="field">
+                        Password must be at least 6 characters long!
+                    </p>
+
+                    <p class="field">
+                        Passwords must match!
+                    </p>
+                </div>
+
+                <div class="details-container">
+                    <label for="password">Repeat password:</label>
+                    <input type="password" name="password" id="password" placeholder="**********" class="profile-input">
+
+                    <p class="field">
+                        Passwords must match!
+                    </p>
+                </div>
+
+                <input type="submit" value="REGISTER" class="btn">
+
+                <p>
+                    <span>If you already have a profile please <i class="fa-solid fa-arrow-right"></i><a class="sign"
+                            href="#">Sign in</a></span>
+                </p>
+            </form>
+        </section>
+        <section id="create-product">
+            <form class="create-form">
+                <h2>Create Product</h2>
+                <div class="details-container">
+                    <label for="title">Title:</label>
+                    <input class="profile-input" type="text" name="title" id="title">
+
+                    <p class="field">
+                        Title must be at least 3 characters long!
+                    </p>
+                </div>
+
+                <div class="details-container">
+                    <label for="description">Description:</label>
+                    <input class="profile-input" type="text" name="description" id="description">
+
+                    <p class="field">
+                        Description must be at least 6 characters long!
+                    </p>
+                </div>
+
+                <div class="details-container">
+                    <label for="imageUrl">Image:</label>
+                    <input class="profile-input" type="text" name="imageUrl" id="imageUrl">
+
+                    <p class="field">
+                        Please provide valid URL!
+                    </p>
+
+                </div>
+
+                <div class="details-container">
+                    <label for="price">Price:</label>
+                    <input class="profile-input" type="text" name="price" id="price">
+                    <p class="field">
+                        Price need to be a number!
+                    </p>
+                </div>
+
+                <input type="submit" value="CREATE" class="btn">
+
+            </form>
+        </section>
+        <section id="details">
+            <h2 class="details-heading">Product Detail</h2>
+            <div class="details-container">
+                <div class="img-wrapper">
+                    <img src="images/p1.png" alt="" class="details-img">
+                </div>
+                <div class="details-info">
+                    <h3 class="details-title">Treadmill X784-K2</h3>
+                    <p class="details-desc">Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Assumenda ratione
+                        iste quibusdam voluptatum facere aperiam vel, voluptatem dolor consectetur saepe.</p>
+                    <p class="details-price">Product price: 120$</p>
+                    <button class="btn">EDIT</button>
+                    <button class="btn remove-btn">REMOVE</button>
+                    <button class="btn">ADD TO CART</button>
+                </div>
+
+            </div>
+        </section> -->
+        <!-- <div class="overlay-payment">
+            <div class="backdrop"></div>
+            <div class="modal">
+                <section id="cart">
+                    <h2 class="cart-title">YOUR BASKET <span class="total-price">$168.00</span></h2>
+                    <div class="no-items">There is no items in basket</div>
+                    <div class="cart-items">
+                        <div class="item-info">
+                            <div class="item-img-wrapper">
+                                <img src="images/p1.png" alt="" class="cart-img">
+                            </div>
+                            <div class="item-wrapper">
+                                <p class="item-name">Treadmill</p>
+                                <p class="item-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                    Necessitatibus, facilis.</p>
+                                <p class="item-price">$100.00</p>
+                                <a href="#" class="trash"><i class="fa-solid fa-trash"></i></a>
+                            </div>
+                            <hr />
+                        </div>
+                        <div class="item-info">
+                            <div class="item-img-wrapper">
+                                <img src="images/p3.png" alt="" class="cart-img">
+                            </div>
+                            <div class="item-wrapper">
+                                <p class="item-name">Treadmill</p>
+                                <p class="item-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                    Necessitatibus, facilis.</p>
+                                <p class="item-price">$100.00</p>
+                                <a href="#" class="trash"><i class="fa-solid fa-trash"></i></a>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                    <button class="order-btn">ORDER NOW</button>
+                </section>
+            </div>
+        </div> -->
+        <section id="completed-order">
+            <h2>YOUR ORDER IS COMPLETED</h2>
+            <img src="images/completed.png" alt="" class="completed-img">
+        </section>
+        <footer id="footer">
+            <div class="contact-us">
+                <h2 class="footer-title">CONTACT US</h2>
+                <div class="contacts-info">
+                    <div>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Location</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>john@gmail.com</span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>(+12 1234456789)</span>
+                    </div>
+                </div>
+
+                <div class="contacts-socials">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </div>
+            </div>
+            <hr />
+            <p class="rights">&copy; 2023 All Rights Reserved By Free Html Templates</p>
+        </footer>
+    </main>
+</body>
+
+</html>
