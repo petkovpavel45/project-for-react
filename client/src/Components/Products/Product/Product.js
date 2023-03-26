@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 export const Product = ({
   title,
-  // description,
   imageUrl,
-  price
+  price,
+  _id
 }) => {
   return (
     <div className="product-card">
@@ -24,7 +24,7 @@ export const Product = ({
       <h3 className="card-title">{title}</h3>
       <div className="price-details-wrapper">
         <p className="card-price">{price}$</p>
-        <Link to="/products/:productId" className="btn btn-detail">
+        <Link to={`/products/${_id}`} className="btn btn-detail">
           DETAILS
         </Link>
       </div>

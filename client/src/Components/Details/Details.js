@@ -1,22 +1,43 @@
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
+import { useService } from "../../hooks/useService";
+
+import { AuthContext } from "../../contexts/AuthContext";
+import { productServiceFactory } from "../../Services/productService";
 export const Details = () => {
+  const [product, setProduct] = useState({});
+  const { productId } = useParams();
+  const productService = useService(productServiceFactory);
+  const { isAuthenticated, userId } = useContext(AuthContext);
+  const isOwner = userId === product._ownerId;
+  console.log(isOwner);
+  useEffect(() => {
+    productService.getOne(productId).then((result) => setProduct(result));
+  }, [productId]);
   return (
     <section id="details">
       <h2 className="details-heading">Product Detail</h2>
       <div className="details-container">
         <div className="img-wrapper">
-          <img src="../../../public/images/p1.png" alt="p1" className="details-img" />
+          <img
+            src={product.imageUrl}
+            alt={product.title}
+            className="details-img"
+          />
         </div>
         <div className="details-info">
-          <h3 className="details-title">Treadmill X784-K2</h3>
-          <p className="details-desc">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-            ratione iste quibusdam voluptatum facere aperiam vel, voluptatem
-            dolor consectetur saepe.
-          </p>
-          <p className="details-price">Product price: 120$</p>
-          <button className="btn">EDIT</button>
-          <button className="btn remove-btn">REMOVE</button>
-          <button className="btn">ADD TO CART</button>
+          <h3 className="details-title">{product.title}</h3>
+          <p className="details-desc">{product.description}</p>
+          <p className="details-price">Product price: {product.price}$</p>
+          {isOwner && (
+            <>
+              <button className="btn">EDIT</button>
+              <button className="btn remove-btn">REMOVE</button>
+            </>
+          )}
+          {!isOwner && isAuthenticated && (
+            <button className="btn">ADD TO CART</button>
+          )}
         </div>
       </div>
     </section>
