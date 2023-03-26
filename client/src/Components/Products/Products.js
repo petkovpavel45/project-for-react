@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Link } from "react-router-dom";
 
-export const Products = () => {
+export const Products = ({
+  products
+}) => {
   return (
     <section id="products">
       <h2 className="products-title">PRODUCTS</h2>

@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-redundant-roles */
+
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
@@ -12,7 +12,7 @@ export const Header = () => {
       <div className="logo-container">
         <img src="images/logo.png" alt="logo" className="logo" />
       </div>
-      <ul className="nav-list" role="list">
+      <ul className="nav-list" role='list'>
         <li className="list">
           <Link to="/">HOME</Link>
         </li>
@@ -33,6 +33,7 @@ export const Header = () => {
         )}
       </ul>
       <ul className="user-info" role="list">
+        {isAuthenticated && <li>Welcome {username}!</li>}
         <li>
           <Link className="user">
             <i className="fa-regular fa-user"></i>
