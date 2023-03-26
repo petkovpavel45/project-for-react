@@ -1,7 +1,15 @@
-export const Create = () => {
+import { useForm } from "../../hooks/useForm";
+
+export const Create = ({ onCreateSubmit }) => {
+  const { changeHandler, onSubmit, values } = useForm(onCreateSubmit, {
+    title: "",
+    description: "",
+    imageUrl: "",
+    price: "",
+  });
   return (
     <section id="create-product">
-      <form className="create-form">
+      <form className="create-form" method="POST" onSubmit={onSubmit}>
         <h2>Create Product</h2>
         <div className="details-container">
           <label htmlFor="title">Title:</label>
@@ -10,9 +18,11 @@ export const Create = () => {
             type="text"
             name="title"
             id="title"
+            value={values.title}
+            onChange={changeHandler}
           />
 
-          <p className="field">Title must be at least 3 characters long!</p>
+          {/* <p className="field">Title must be at least 3 characters long!</p> */}
         </div>
 
         <div className="details-container">
@@ -22,11 +32,13 @@ export const Create = () => {
             type="text"
             name="description"
             id="description"
+            value={values.description}
+            onChange={changeHandler}
           />
 
-          <p className="field">
+          {/* <p className="field">
             Description must be at least 6 characters long!
-          </p>
+          </p> */}
         </div>
 
         <div className="details-container">
@@ -36,6 +48,8 @@ export const Create = () => {
             type="text"
             name="imageUrl"
             id="imageUrl"
+            value={values.imageUrl}
+            onChange={changeHandler}
           />
 
           <p className="field">Please provide valid URL!</p>
@@ -48,8 +62,10 @@ export const Create = () => {
             type="text"
             name="price"
             id="price"
+            value={values.price}
+            onChange={changeHandler}
           />
-          <p className="field">Price need to be a number!</p>
+          {/* <p className="field">Price need to be a number!</p> */}
         </div>
 
         <input type="submit" value="CREATE" className="btn" />

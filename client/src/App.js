@@ -35,6 +35,12 @@ function App() {
     });
   }, []);
 
+  const onCreateSubmit = async (data) => {
+    const newProduct = await productService.create(data);
+    setProducts(state => [...state, newProduct]);
+    navigate('/products')
+  }
+
   const onLoginSubmit = async (data) => {
     try {
       const result = await authService.login(data);
@@ -87,7 +93,7 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/payment" element={<Payment />} />
 
-          <Route path="/create-equipment" element={<Create />} />
+          <Route path="/create-equipment" element={<Create onCreateSubmit={onCreateSubmit}/>} />
           <Route path="/products" element={<Products products={products}/>} />
           <Route path="/products/:productId" element={<Details />} />
 
