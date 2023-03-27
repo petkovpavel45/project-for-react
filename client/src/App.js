@@ -21,6 +21,7 @@ import { Details } from "./Components/Details/Details";
 import { Products } from "./Components/Products/Products";
 
 import { Footer } from "./Components/Footer/Footer";
+import { Edit } from "./Components/Edit/Edit";
 
 function App() {
   const navigate = useNavigate();
@@ -40,6 +41,12 @@ function App() {
     setProducts(state => [...state, newProduct]);
     navigate('/products')
   }
+
+  const onEditSubmit = async (values) => {
+    const result = await productService.edit(values._id, values);
+    setProducts((state) => state.map((x) => (x._id === values._id ? result : x)));
+    navigate(`/products/${values._id}`);
+  };
 
   const onLoginSubmit = async (data) => {
     try {
@@ -96,6 +103,7 @@ function App() {
           <Route path="/create-equipment" element={<Create onCreateSubmit={onCreateSubmit}/>} />
           <Route path="/products" element={<Products products={products}/>} />
           <Route path="/products/:productId" element={<Details />} />
+          <Route path="/products/:productId/edit" element={<Edit onEditSubmit={onEditSubmit}/>} />
 
           <Route path="/why-us" element={<WhyUs />} />
           <Route path="/about" element={<AboutUs />} />

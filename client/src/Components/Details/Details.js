@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useService } from "../../hooks/useService";
 
 import { AuthContext } from "../../contexts/AuthContext";
@@ -31,7 +31,7 @@ export const Details = () => {
           <p className="details-price">Product price: {product.price}$</p>
           {isOwner && (
             <>
-              <button className="btn">EDIT</button>
+              <Link to={`/products/${productId}/edit`} className="btn">EDIT</Link>
               <button className="btn remove-btn">REMOVE</button>
             </>
           )}
