@@ -8,6 +8,7 @@ export const Register = () => {
     email: "",
     username: "",
     phoneNumber: "",
+    address: "",
     password: "",
     repeatPassword: "",
   });
@@ -55,6 +56,21 @@ export const Register = () => {
             name="phoneNumber"
             id="phoneNumber"
             value={values.phoneNumber}
+            onChange={changeHandler}
+          />
+
+          {/* <p className="field">Phone number must be 10 digits!</p> */}
+        </div>
+
+        <div className="details-container">
+          <label htmlFor="address">Address:</label>
+          <input
+            className="profile-input"
+            type="text"
+            placeholder="Main street 1"
+            name="address"
+            id="address"
+            value={values.address}
             onChange={changeHandler}
           />
 

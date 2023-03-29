@@ -1,9 +1,30 @@
+import { useForm } from "../../hooks/useForm";
+import { useEffect, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useService } from "../../hooks/useService";
+import { authServiceFactory } from "../../Services/authService";
+import logo from "../../public/images/profile.png";
 export const Profile = () => {
+  const { onProfileEditSubmit } = useContext(AuthContext);
+  const authService = useService(authServiceFactory);
+  const { changeHandler, changeValues, values } = useForm(onProfileEditSubmit, {
+    email: "",
+    username: "",
+    phoneNumber: "",
+    address: "",
+  });
+
+  useEffect(() => {
+    authService.getMyProfile().then((result) => {
+      changeValues(result);
+    });
+  }, []);
+
   return (
     <section id="profile">
       <form className="profile-form forms">
         <h3>My Profile</h3>
-        <img src="images/profile.png" alt="" className="profile-img" />
+        <img src={logo} alt="profile" className="profile-img" />
         <div className="details-container">
           <label htmlFor="email">Email:</label>
           <input
@@ -12,9 +33,13 @@ export const Profile = () => {
             type="email"
             name="email"
             id="email"
+            value={values.email}
+            onChange={changeHandler}
+            style={{ all: "unset", marginLeft: "10px" }}
+            disabled
           />
 
-          <p className="field">Email is not valid!</p>
+          {/* <p className="field">Email is not valid!</p> */}
         </div>
 
         <div className="details-container">
@@ -25,25 +50,49 @@ export const Profile = () => {
             type="text"
             name="username"
             id="username"
+            value={values.username}
+            onChange={changeHandler}
+            style={{ all: "unset", marginLeft: "10px" }}
+            disabled
           />
 
-          <p className="field">Username must be at least 6 characters long!</p>
+          {/* <p className="field">Username must be at least 6 characters long!</p> */}
         </div>
 
         <div className="details-container">
           <label htmlFor="phoneNumber">Phone:</label>
           <input
             className="profile-input"
-            type="number"
+            type="text"
             placeholder="0123456789"
             name="phoneNumber"
             id="phoneNumber"
+            value={values.phoneNumber}
+            onChange={changeHandler}
+            style={{ all: "unset", marginLeft: "10px" }}
+            disabled
           />
 
-          <p className="field">Phone number must be 10 digits!</p>
+          {/* <p className="field">Phone number must be 10 digits!</p> */}
+        </div>
+        <div className="details-container">
+          <label htmlFor="address">Address:</label>
+          <input
+            className="profile-input"
+            type="text"
+            placeholder="Main street 1"
+            name="address"
+            id="address"
+            value={values.address}
+            onChange={changeHandler}
+            style={{ all: "unset", marginLeft: "10px", width: '100px' }}
+            disabled
+          />
+
+          {/* <p className="field">Phone number must be 10 digits!</p> */}
         </div>
 
-        <input type="submit" value="EDIT" id="edit" className="btn" />
+        {/* <input type="submit" value="EDIT" id="edit" className="btn" /> */}
       </form>
     </section>
   );

@@ -1,19 +1,25 @@
 import { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useService } from "../../hooks/useService";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { productServiceFactory } from "../../Services/productService";
 export const Details = () => {
+  const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const { productId } = useParams();
   const productService = useService(productServiceFactory);
   const { isAuthenticated, userId } = useContext(AuthContext);
   const isOwner = userId === product._ownerId;
-  console.log(isOwner);
   useEffect(() => {
     productService.getOne(productId).then((result) => setProduct(result));
   }, [productId]);
+
+  const onDeleteClick = async () => {
+    await productService.deleteProduct(product._id);
+    
+    navigate("/products");
+  };
   return (
     <section id="details">
       <h2 className="details-heading">Product Detail</h2>
@@ -32,7 +38,7 @@ export const Details = () => {
           {isOwner && (
             <>
               <Link to={`/products/${productId}/edit`} className="btn">EDIT</Link>
-              <button className="btn remove-btn">REMOVE</button>
+              <button className="btn remove-btn" onClick={onDeleteClick}>REMOVE</button>
             </>
           )}
           {!isOwner && isAuthenticated && (

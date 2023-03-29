@@ -76,6 +76,7 @@ function App() {
     setAuth({});
   };
 
+
   const context = {
     onLoginSubmit,
     onRegisterSubmit,
@@ -96,7 +97,7 @@ function App() {
           <Route path="/" element={<Hero />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:profileId" element={<Profile />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/payment" element={<Payment />} />
 
@@ -107,6 +108,7 @@ function App() {
 
           <Route path="/why-us" element={<WhyUs />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="*" element={<Hero/>} />
         </Routes>
         <Footer />
       </main>

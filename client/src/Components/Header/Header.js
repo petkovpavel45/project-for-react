@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 
 export const Header = () => {
-  const { username, isAuthenticated } = useContext(AuthContext);
+  const { username, isAuthenticated, userId } = useContext(AuthContext);
 
   return (
     <header id="header">
@@ -54,7 +54,7 @@ export const Header = () => {
                   <Link to="/logout">LOGOUT</Link>
                 </li>
                 <li>
-                  <Link to="/profile">PROFILE</Link>
+                  <Link to={`/profile/${userId}`}>PROFILE</Link>
                 </li>
               </ul>
             )}
