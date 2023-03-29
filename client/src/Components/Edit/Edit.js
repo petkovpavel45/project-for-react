@@ -1,10 +1,12 @@
-import './styles/create.css'
+import "./styles/create.css";
 import { useForm } from "../../hooks/useForm";
 import { useParams } from "react-router-dom";
 import { useService } from "../../hooks/useService";
 import { productServiceFactory } from "../../Services/productService";
 import { useEffect } from "react";
-export const Edit = ({ onEditSubmit }) => {
+import { useProductContext } from "../../contexts/ProductContext";
+export const Edit = () => {
+  const { onEditSubmit } = useProductContext();
   const { productId } = useParams();
   const productService = useService(productServiceFactory);
   const { changeHandler, changeValues, onSubmit, values } = useForm(

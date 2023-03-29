@@ -1,13 +1,13 @@
 import profileLogo from "./images/profile.png";
-import './styles/user.css'
+import "./styles/user.css";
 
 import { useForm } from "../../hooks/useForm";
-import { useEffect, useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useEffect } from "react";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { useService } from "../../hooks/useService";
 import { authServiceFactory } from "../../Services/authService";
 export const Profile = () => {
-  const { onProfileEditSubmit } = useContext(AuthContext);
+  const { onProfileEditSubmit } = useAuthContext();
   const authService = useService(authServiceFactory);
   const { changeHandler, changeValues, values } = useForm(onProfileEditSubmit, {
     email: "",
@@ -87,7 +87,7 @@ export const Profile = () => {
             id="address"
             value={values.address}
             onChange={changeHandler}
-            style={{ all: "unset", marginLeft: "10px", width: '100px' }}
+            style={{ all: "unset", marginLeft: "10px", width: "100px" }}
             disabled
           />
 

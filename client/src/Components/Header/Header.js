@@ -2,11 +2,10 @@
 import logo from './images/logo.png'
 import './styles/header.css'
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext";
-import { useContext } from "react";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Header = () => {
-  const { username, isAuthenticated, userId } = useContext(AuthContext);
+  const { username, isAuthenticated, userId } = useAuthContext()
 
   return (
     <header id="header">

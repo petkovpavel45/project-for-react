@@ -7,27 +7,33 @@ export const productServiceFactory = (token) => {
 
   const getAll = async () => {
     const result = await request.get(baseUrl);
-    const product = Object.values(result);
-    return product;
+    const products = Object.values(result);
+
+    return products;
   };
 
   const getOne = async (productId) => {
-    return await request.get(`${baseUrl}/${productId}`);
-  };
+    const result = await request.get(`${baseUrl}/${productId}`);
 
-  const create = async (gameData) => {
-    const result = await request.post(baseUrl, gameData);
     return result;
   };
 
-  const deleteProduct = (productId) => request.delete(`${baseUrl}/${productId}`);
+  const create = async (productData) => {
+    const result = await request.post(baseUrl, productData);
+    return result;
+  };
 
-  const edit = (productId, data) => request.put(`${baseUrl}/${productId}`, data);
+  const edit = (productId, data) =>
+    request.put(`${baseUrl}/${productId}`, data);
+
+  const deleteProduct = (productId) =>
+    request.delete(`${baseUrl}/${productId}`);
+
   return {
     getAll,
     getOne,
     create,
-    deleteProduct,
     edit,
+    delete: deleteProduct,
   };
 };

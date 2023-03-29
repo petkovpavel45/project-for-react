@@ -1,12 +1,11 @@
-import profileLogo from './images/profile.png'
-import './styles/user.css'
+import profileLogo from "./images/profile.png";
+import "./styles/user.css";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Login = () => {
-  const { onLoginSubmit } = useContext(AuthContext);
+  const { onLoginSubmit } = useAuthContext();
   const { changeHandler, onSubmit, values } = useForm(onLoginSubmit, {
     email: "",
     password: "",

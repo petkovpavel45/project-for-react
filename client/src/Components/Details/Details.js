@@ -1,26 +1,32 @@
-import './styles/details.css'
+import "./styles/details.css";
 
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useService } from "../../hooks/useService";
 
-import { AuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { productServiceFactory } from "../../Services/productService";
+import { useProductContext } from "../../contexts/ProductContext";
 export const Details = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
   const { productId } = useParams();
   const productService = useService(productServiceFactory);
-  const { isAuthenticated, userId } = useContext(AuthContext);
+  const { isAuthenticated, userId } = useAuthContext();
+  const { deleteProduct } = useProductContext();
   const isOwner = userId === product._ownerId;
   useEffect(() => {
     productService.getOne(productId).then((result) => setProduct(result));
   }, [productId]);
 
   const onDeleteClick = async () => {
-    await productService.deleteProduct(product._id);
-    
-    navigate("/products");
+    // eslint-disable-next-line no-restricted-globals
+    const result = confirm(`Are you sure you want to delete ${product.title}`);
+    if (result) {
+      await productService.delete(product._id);
+      deleteProduct(product._id);
+      navigate("/products");
+    }
   };
   return (
     <section id="details">
@@ -39,8 +45,12 @@ export const Details = () => {
           <p className="details-price">Product price: {product.price}$</p>
           {isOwner && (
             <>
-              <Link to={`/products/${productId}/edit`} className="btn">EDIT</Link>
-              <button className="btn remove-btn" onClick={onDeleteClick}>REMOVE</button>
+              <Link to={`/products/${productId}/edit`} className="btn">
+                EDIT
+              </Link>
+              <button className="btn remove-btn" onClick={onDeleteClick}>
+                REMOVE
+              </button>
             </>
           )}
           {!isOwner && isAuthenticated && (

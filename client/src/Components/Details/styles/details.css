@@ -48,8 +48,9 @@
     font-size: 30px;
 }
 
-#details button {
-    margin-right: 4px;
+#details a.btn {
+    margin-right: 8px;
+    padding: 12px 34px;
 }
 
 #details .remove-btn:hover {

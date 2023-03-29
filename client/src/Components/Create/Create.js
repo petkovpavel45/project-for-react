@@ -1,8 +1,10 @@
-import './styles/create.css'
+import "./styles/create.css";
 
 import { useForm } from "../../hooks/useForm";
+import { useProductContext } from "../../contexts/ProductContext";
 
-export const Create = ({ onCreateSubmit }) => {
+export const Create = () => {
+  const { onCreateSubmit } = useProductContext();
   const { changeHandler, onSubmit, values } = useForm(onCreateSubmit, {
     title: "",
     description: "",

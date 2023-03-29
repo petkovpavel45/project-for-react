@@ -1,6 +1,8 @@
-import './styles/products.css'
+import "./styles/products.css";
 import { Product } from "./Product/Product";
-export const Products = ({ products }) => {
+import { useProductContext } from "../../contexts/ProductContext";
+export const Products = () => {
+  const { products } = useProductContext();
   return (
     <section id="products">
       <h2 className="products-title">PRODUCTS</h2>
