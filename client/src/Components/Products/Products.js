@@ -1,3 +1,4 @@
+import './styles/products.css'
 import { Product } from "./Product/Product";
 export const Products = ({ products }) => {
   return (

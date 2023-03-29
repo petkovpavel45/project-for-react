@@ -1,3 +1,5 @@
+import './styles/why-us.css'
+
 export const WhyUs = () => {
   return (
     <section id="why-us">

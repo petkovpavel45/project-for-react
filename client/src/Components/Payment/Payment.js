@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import './styles/cart.css'
 export const Payment = () => {
   return (
     <div className="overlay-payment">

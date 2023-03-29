@@ -1,3 +1,5 @@
+import './styles/details.css'
+
 import { useState, useEffect, useContext } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useService } from "../../hooks/useService";

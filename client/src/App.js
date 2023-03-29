@@ -1,6 +1,9 @@
+import './styles/reset.css'
+import "./styles/style.css";
+import './styles/responsive.css'
+
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import { AuthContext } from "./contexts/AuthContext";
 import { authServiceFactory } from "./Services/authService";
 import { productServiceFactory } from "./Services/productService";
@@ -26,10 +29,10 @@ import { Edit } from "./Components/Edit/Edit";
 function App() {
   const navigate = useNavigate();
   const [auth, setAuth] = useState({});
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
   const authService = authServiceFactory(auth.accessToken);
   const productService = productServiceFactory(auth.accessToken);
-  
+
   useEffect(() => {
     productService.getAll().then((result) => {
       setProducts(result);
@@ -38,13 +41,15 @@ function App() {
 
   const onCreateSubmit = async (data) => {
     const newProduct = await productService.create(data);
-    setProducts(state => [...state, newProduct]);
-    navigate('/products')
-  }
+    setProducts((state) => [...state, newProduct]);
+    navigate("/products");
+  };
 
   const onEditSubmit = async (values) => {
     const result = await productService.edit(values._id, values);
-    setProducts((state) => state.map((x) => (x._id === values._id ? result : x)));
+    setProducts((state) =>
+      state.map((x) => (x._id === values._id ? result : x))
+    );
     navigate(`/products/${values._id}`);
   };
 
@@ -76,7 +81,6 @@ function App() {
     setAuth({});
   };
 
-
   const context = {
     onLoginSubmit,
     onRegisterSubmit,
@@ -101,14 +105,20 @@ function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/payment" element={<Payment />} />
 
-          <Route path="/create-equipment" element={<Create onCreateSubmit={onCreateSubmit}/>} />
-          <Route path="/products" element={<Products products={products}/>} />
+          <Route
+            path="/create-equipment"
+            element={<Create onCreateSubmit={onCreateSubmit} />}
+          />
+          <Route path="/products" element={<Products products={products} />} />
           <Route path="/products/:productId" element={<Details />} />
-          <Route path="/products/:productId/edit" element={<Edit onEditSubmit={onEditSubmit}/>} />
+          <Route
+            path="/products/:productId/edit"
+            element={<Edit onEditSubmit={onEditSubmit} />}
+          />
 
           <Route path="/why-us" element={<WhyUs />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="*" element={<Hero/>} />
+          <Route path="*" element={<Hero />} />
         </Routes>
         <Footer />
       </main>

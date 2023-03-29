@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-
+import logo from './images/logo.png'
+import './styles/header.css'
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
@@ -10,7 +11,7 @@ export const Header = () => {
   return (
     <header id="header">
       <div className="logo-container">
-        <img src="images/logo.png" alt="logo" className="logo" />
+        <img src={logo} alt="logo" className="logo" />
       </div>
       <ul className="nav-list" role='list'>
         <li className="list">

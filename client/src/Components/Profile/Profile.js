@@ -1,9 +1,11 @@
+import profileLogo from "./images/profile.png";
+import './styles/user.css'
+
 import { useForm } from "../../hooks/useForm";
 import { useEffect, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useService } from "../../hooks/useService";
 import { authServiceFactory } from "../../Services/authService";
-import logo from "../../public/images/profile.png";
 export const Profile = () => {
   const { onProfileEditSubmit } = useContext(AuthContext);
   const authService = useService(authServiceFactory);
@@ -24,7 +26,7 @@ export const Profile = () => {
     <section id="profile">
       <form className="profile-form forms">
         <h3>My Profile</h3>
-        <img src={logo} alt="profile" className="profile-img" />
+        <img src={profileLogo} alt="profile" className="profile-img" />
         <div className="details-container">
           <label htmlFor="email">Email:</label>
           <input

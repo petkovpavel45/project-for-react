@@ -1,3 +1,5 @@
+import '../styles/products.css'
+
 import { Link } from "react-router-dom";
 
 export const Product = ({

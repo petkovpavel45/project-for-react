@@ -1,3 +1,5 @@
+import profileLogo from './images/profile.png'
+import './styles/user.css'
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { useContext } from "react";
@@ -13,7 +15,7 @@ export const Login = () => {
     <section id="login">
       <form className="forms" method="POST" onSubmit={onSubmit}>
         <h2>Login</h2>
-        <img src="images/profile.png" alt="profile" className="profile-img" />
+        <img src={profileLogo} alt="profileLogo" className="profile-img" />
         <div className="details-container">
           <label htmlFor="email">Email:</label>
           <input

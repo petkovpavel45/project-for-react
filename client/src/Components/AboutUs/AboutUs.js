@@ -1,3 +1,5 @@
+import aboutPic from './images/about-img.jpg'
+import './styles/about-us.css'
 export const AboutUs = () => {
   return (
     <section id="about-us">
@@ -14,7 +16,7 @@ export const AboutUs = () => {
         </div>
 
         <div className="about-img-wrapper">
-          <img src="images/about-img.jpg" alt="" className="about-img" />
+          <img src={aboutPic} alt="about-pic" className="about-img" />
         </div>
       </div>
     </section>
