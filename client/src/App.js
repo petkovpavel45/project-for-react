@@ -3,7 +3,12 @@ import "./styles/style.css";
 import "./styles/responsive.css";
 
 import { Route, Routes } from "react-router-dom";
+
 import { AuthProvider } from "./contexts/AuthContext";
+import { ProductProvider } from "./contexts/ProductContext";
+
+import { RouteGuard } from "./Components/Guards/RouteGuard";
+import { ProductOwner } from "./Components/Guards/ProductOwner";
 
 import { Header } from "./Components/Header/Header";
 import { Hero } from "./Components/Hero/Hero";
@@ -16,15 +21,12 @@ import { Profile } from "./Components/Profile/Profile";
 import { Logout } from "./Components/Logout/Logout";
 import { Payment } from "./Components/Payment/Payment";
 
+import { Products } from "./Components/Products/Products";
 import { Create } from "./Components/Create/Create";
 import { Details } from "./Components/Details/Details";
-import { Products } from "./Components/Products/Products";
+import { Edit } from "./Components/Edit/Edit";
 
 import { Footer } from "./Components/Footer/Footer";
-import { Edit } from "./Components/Edit/Edit";
-import { ProductProvider } from "./contexts/ProductContext";
-import { RouteGuard } from "./Components/Guards/RouteGuard";
-import { ProductOwner } from "./Components/Guards/ProductOwner";
 
 function App() {
   return (

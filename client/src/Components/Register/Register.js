@@ -1,8 +1,11 @@
 import './styles/user.css'
 import profileLogo from './images/profile.png'
+
+import { Link } from "react-router-dom";
+
 import { useForm } from "../../hooks/useForm";
 import { useAuthContext } from "../../contexts/AuthContext";
-import { Link } from "react-router-dom";
+
 export const Register = () => {
   const { onRegisterSubmit } = useAuthContext()
   const { changeHandler, onSubmit, values } = useForm(onRegisterSubmit, {

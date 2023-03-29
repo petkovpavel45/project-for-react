@@ -1,11 +1,15 @@
-import profileLogo from "./images/profile.png";
 import "./styles/user.css";
+import profileLogo from "./images/profile.png";
+
+import { useEffect } from "react";
 
 import { useForm } from "../../hooks/useForm";
-import { useEffect } from "react";
-import { useAuthContext } from "../../contexts/AuthContext";
 import { useService } from "../../hooks/useService";
+
+import { useAuthContext } from "../../contexts/AuthContext";
+
 import { authServiceFactory } from "../../Services/authService";
+
 export const Profile = () => {
   const { onProfileEditSubmit } = useAuthContext();
   const authService = useService(authServiceFactory);

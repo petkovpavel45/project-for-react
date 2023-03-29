@@ -2,11 +2,14 @@ import "./styles/details.css";
 
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
+
 import { useService } from "../../hooks/useService";
 
 import { useAuthContext } from "../../contexts/AuthContext";
-import { productServiceFactory } from "../../Services/productService";
 import { useProductContext } from "../../contexts/ProductContext";
+
+import { productServiceFactory } from "../../Services/productService";
+
 export const Details = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState({});

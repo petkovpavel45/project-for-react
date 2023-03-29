@@ -1,6 +1,8 @@
-import profileLogo from "./images/profile.png";
 import "./styles/user.css";
+import profileLogo from "./images/profile.png";
+
 import { Link } from "react-router-dom";
+
 import { useForm } from "../../hooks/useForm";
 import { useAuthContext } from "../../contexts/AuthContext";
 
