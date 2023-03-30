@@ -27,7 +27,6 @@ import { Details } from "./Components/Details/Details";
 import { Edit } from "./Components/Edit/Edit";
 
 import { Footer } from "./Components/Footer/Footer";
-
 function App() {
   return (
     <AuthProvider>

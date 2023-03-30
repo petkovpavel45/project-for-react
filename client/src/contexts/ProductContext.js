@@ -8,11 +8,13 @@ export const ProductContext = createContext();
 export const ProductProvider = ({ children }) => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const productService = productServiceFactory();
+  const [isLoading, setLoading] = useState(true);
 
+  const productService = productServiceFactory();
   useEffect(() => {
     productService.getAll().then((result) => {
       setProducts(result);
+      setLoading(false);
     });
   }, []);
 
@@ -46,6 +48,7 @@ export const ProductProvider = ({ children }) => {
     onEditSubmit,
     deleteProduct,
     getProduct,
+    isLoading
   };
 
   return (
