@@ -28,6 +28,7 @@ import { Edit } from "./Components/Edit/Edit";
 
 import { Footer } from "./Components/Footer/Footer";
 import { CartProvider } from "./contexts/CartContext";
+import { Completed } from "./Components/Completed/Completed";
 function App() {
   return (
     <AuthProvider>
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/profile/:profileId" element={<Profile />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/create-equipment" element={<Create />} />
+                <Route path="/completed" element={<Completed />} />
                 <Route
                   path="/products/:productId/edit"
                   element={

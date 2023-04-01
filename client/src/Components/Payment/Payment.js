@@ -3,10 +3,17 @@ import "./styles/cart.css";
 import { Item } from "./Item";
 import { useCartContext } from "../../contexts/CartContext";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 export const Payment = () => {
-  const { items, total } = useCartContext();
+  const { items, total, setItems, setTotal } = useCartContext();
   const { userId } = useAuthContext();
-  const ownerItems = items.filter((x) => x._ownerId === userId);
+  let ownerItems = items.filter((x) => x._ownerId === userId);
+  const navigate = useNavigate();
+  const onOrderClick = () => {
+    setItems([]);
+    setTotal(0)
+    navigate('/completed')
+  }
   // ownerItems.push(total);
   return (
     <div className="overlay-payment">
@@ -24,7 +31,7 @@ export const Payment = () => {
               <Item key={x._id} {...x} />
             ))}
           </div>
-          <button className="order-btn">ORDER NOW</button>
+          <button onClick={onOrderClick} className="order-btn">ORDER NOW</button>
         </section>
       </div>
     </div>

@@ -6,6 +6,7 @@ export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
   const cartService = useService(cartServiceFactory);
+  
   useEffect(() => {
     cartService.getAll().then((result) => {
       setItems(result);
@@ -14,8 +15,9 @@ export const CartProvider = ({ children }) => {
 
   const deleteItem = (productId) => {
     setItems((state) =>
-      state.filter((item) => item._id !== productId)
+      state.filter((item) => item._id !== productId),
     );
+
   };
 
   const context = {

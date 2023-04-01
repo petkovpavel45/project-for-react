@@ -11,13 +11,14 @@ export const Item = ({
     _id
 }) => {
   const cartService = useService(cartServiceFactory);
-  const {deleteItem} = useCartContext();
+  const {deleteItem, setTotal} = useCartContext();
   const onDeleteClick = async () => {
     // eslint-disable-next-line no-restricted-globals
     const result = confirm(`Are you sure you want to delete ${title}`);
     if (result) {
       await cartService.deleteItem(_id);
       deleteItem(_id);
+      setTotal(state => state -= price)
     }
   };
     return (

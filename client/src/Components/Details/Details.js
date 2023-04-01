@@ -26,7 +26,7 @@ export const Details = () => {
   const { deleteProduct } = useProductContext();
   const { setItems, setTotal } = useCartContext();
   const isOwner = userId === product._ownerId;
-  
+
   useEffect(() => {
     productService.getOne(productId).then((result) => setProduct(result));
   }, [productId]);
@@ -43,12 +43,8 @@ export const Details = () => {
 
   const onAddItem = async () => {
     const result = await cartService.addInCart(product);
-    let {total} = await authService.getMyProfile();
     setItems((state) => [...state, result]);
-    total = total + Number(result.price);
-    console.log(total);
-
-
+    setTotal((oldPrice) => (oldPrice += Number(result.price)));
   };
   return (
     <section id="details">
