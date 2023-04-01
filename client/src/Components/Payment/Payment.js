@@ -1,67 +1,28 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import './styles/cart.css'
+import "./styles/cart.css";
+import { Item } from "./Item";
+import { useCartContext } from "../../contexts/CartContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 export const Payment = () => {
+  const { items, total } = useCartContext();
+  const { userId } = useAuthContext();
+  const ownerItems = items.filter((x) => x._ownerId === userId);
+  // ownerItems.push(total);
   return (
     <div className="overlay-payment">
       <div className="backdrop"></div>
       <div className="modal">
         <section id="cart">
           <h2 className="cart-title">
-            YOUR BASKET <span className="total-price">$168.00</span>
+            YOUR BASKET <span className="total-price">${total.toFixed(2)}</span>
           </h2>
-          {/* <div className="no-items">There is no items in basket</div> */}
+          {ownerItems.length === 0 && (
+            <div className="no-items">There is no items in basket</div>
+          )}
           <div className="cart-items">
-            <div className="item-info">
-              <div className="item-img-wrapper">
-                <img src="images/p1.png" alt="" className="cart-img" />
-              </div>
-              <div className="item-wrapper">
-                <p className="item-name">Treadmill</p>
-                <p className="item-desc">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Necessitatibus, facilis.
-                </p>
-                <p className="item-price">$100.00</p>
-                <a href="#" className="trash">
-                  <i className="fa-solid fa-trash"></i>
-                </a>
-              </div>
-              <hr />
-            </div>
-            <div className="item-info">
-              <div className="item-img-wrapper">
-                <img src="images/p3.png" alt="" className="cart-img" />
-              </div>
-              <div className="item-wrapper">
-                <p className="item-name">Treadmill</p>
-                <p className="item-desc">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Necessitatibus, facilis.
-                </p>
-                <p className="item-price">$100.00</p>
-                <a href="#" className="trash">
-                  <i className="fa-solid fa-trash"></i>
-                </a>
-              </div>
-              <hr />
-            </div>
-            <div className="item-info">
-              <div className="item-img-wrapper">
-                <img src="images/p3.png" alt="" className="cart-img" />
-              </div>
-              <div className="item-wrapper">
-                <p className="item-name">Treadmill</p>
-                <p className="item-desc">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Necessitatibus, facilis.
-                </p>
-                <p className="item-price">$100.00</p>
-                <a href="#" className="trash">
-                  <i className="fa-solid fa-trash"></i>
-                </a>
-              </div>
-              <hr />
-            </div>
+            {ownerItems.map((x) => (
+              <Item key={x._id} {...x} />
+            ))}
           </div>
           <button className="order-btn">ORDER NOW</button>
         </section>

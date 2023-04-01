@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    width: 100%;
 }
 
 #cart hr {
@@ -70,9 +70,11 @@
 }
 
 #cart .trash {
+    all: unset;
     display: block;
     text-align: right;
-    cursor: unset;
+    cursor: pointer;
+    width: 100%;
 }
 
 #cart .fa-trash:hover {

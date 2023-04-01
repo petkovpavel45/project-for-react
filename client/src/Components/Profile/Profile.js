@@ -26,6 +26,7 @@ export const Profile = () => {
     authService.getMyProfile().then((result) => {
       changeValues(result);
       setLoading(false);
+      console.log(result);
     });
   }, []);
 

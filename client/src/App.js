@@ -27,35 +27,41 @@ import { Details } from "./Components/Details/Details";
 import { Edit } from "./Components/Edit/Edit";
 
 import { Footer } from "./Components/Footer/Footer";
+import { CartProvider } from "./contexts/CartContext";
 function App() {
   return (
     <AuthProvider>
       <ProductProvider>
-        <main className="container">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Hero />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/products" element={<Products/>}/>
-            <Route path="/products/:productId" element={<Details />} />
-            <Route path="/why-us" element={<WhyUs />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route element={<RouteGuard />}>
+        <CartProvider>
+          <main className="container">
+            <Header />
+            <Routes>
+              <Route path="/" element={<Hero />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:productId" element={<Details />} />
+              <Route path="/why-us" element={<WhyUs />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route element={<RouteGuard />}>
                 <Route path="/profile/:profileId" element={<Profile />} />
                 <Route path="/logout" element={<Logout />} />
-                <Route path="/create-equipment" element={<Create/>}/>
-                <Route path="/products/:productId/edit" element={
-                  <ProductOwner>
-                    <Edit />
-                  </ProductOwner>
-                }/>
+                <Route path="/create-equipment" element={<Create />} />
+                <Route
+                  path="/products/:productId/edit"
+                  element={
+                    <ProductOwner>
+                      <Edit />
+                    </ProductOwner>
+                  }
+                />
                 <Route path="/payment" element={<Payment />} />
-            </Route>
-            <Route path="*" element={<Hero />} />
-          </Routes>
-          <Footer />
-        </main>
+              </Route>
+              <Route path="*" element={<Hero />} />
+            </Routes>
+            <Footer />
+          </main>
+        </CartProvider>
       </ProductProvider>
     </AuthProvider>
   );

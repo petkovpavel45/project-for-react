@@ -15,6 +15,7 @@ export const Register = () => {
     address: "",
     password: "",
     repeatPassword: "",
+    total: 0
   });
   return (
     <section id="register">
