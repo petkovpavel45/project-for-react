@@ -1,13 +1,22 @@
-import './styles/user.css'
-import profileLogo from './images/profile.png'
+import "./styles/user.css";
+import profileLogo from "./images/profile.png";
 
 import { Link } from "react-router-dom";
 
 import { useForm } from "../../hooks/useForm";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useState } from "react";
 
 export const Register = () => {
-  const { onRegisterSubmit } = useAuthContext()
+  const [registerErrs, setRegisterErrs] = useState({
+    email: "",
+    username: "",
+    phoneNumber: "",
+    address: "",
+    password: "",
+    repeatPassword: "",
+  });
+  const { onRegisterSubmit } = useAuthContext();
   const { changeHandler, onSubmit, values } = useForm(onRegisterSubmit, {
     email: "",
     username: "",
@@ -15,8 +24,43 @@ export const Register = () => {
     address: "",
     password: "",
     repeatPassword: "",
-    total: 0
   });
+  const pattern =
+    /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+
+  const formValidate = (e) => {
+    const value = e.target.value;
+    const errors = {};
+
+    if (e.target.name === "email") {
+      let result = pattern.exec(value);
+      if (result === null) {
+        errors.email = "Please enter a valid email address!";
+      }
+    }
+    if (e.target.name === "username" && value.length < 6) {
+      errors.username = "Username must be at least 6 characters long!";
+    }
+
+    if (e.target.name === "phoneNumber" && value.length !== 10) {
+      errors.phoneNumber = "Phone number must be 10 digits!";
+    }
+
+    if (e.target.name === "address" && value.length < 4) {
+      errors.address = "Address must be at least 4 characters long!";
+    }
+
+    if (e.target.name === "password" && value.length < 6) {
+      errors.password = "Password must be at least 6 characters long!";
+    }
+
+    if (e.target.name === "repeatPassword" && value !== values.password) {
+      errors.repeatPassword = "Passwords must match!";
+    }
+
+    setRegisterErrs(errors);
+  };
+
   return (
     <section id="register">
       <form className="register-form" method="POST" onSubmit={onSubmit}>
@@ -32,9 +76,9 @@ export const Register = () => {
             className="profile-input"
             value={values.email}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-
-          {/* <p className="field">Please enter a valid email address!</p> */}
+          {registerErrs.email && <p className="field">{registerErrs.email}</p>}
         </div>
 
         <div className="details-container">
@@ -47,9 +91,11 @@ export const Register = () => {
             className="profile-input"
             value={values.username}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-
-          {/* <p className="field">Username must be at least 6 characters long!</p> */}
+          {registerErrs.username && (
+            <p className="field">{registerErrs.username}</p>
+          )}
         </div>
 
         <div className="details-container">
@@ -62,9 +108,9 @@ export const Register = () => {
             id="phoneNumber"
             value={values.phoneNumber}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-
-          {/* <p className="field">Phone number must be 10 digits!</p> */}
+          {registerErrs && <p className="field">{registerErrs.phoneNumber}</p>}
         </div>
 
         <div className="details-container">
@@ -77,9 +123,11 @@ export const Register = () => {
             id="address"
             value={values.address}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-
-          {/* <p className="field">Phone number must be 10 digits!</p> */}
+          {registerErrs.address && (
+            <p className="field">{registerErrs.address}</p>
+          )}
         </div>
 
         <div className="details-container">
@@ -92,11 +140,11 @@ export const Register = () => {
             className="profile-input"
             value={values.password}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-
-          {/* <p className="field">Password must be at least 6 characters long!</p> */}
-
-          {/* <p className="field">Passwords must match!</p> */}
+          {registerErrs.password && (
+            <p className="field">{registerErrs.password}</p>
+          )}
         </div>
 
         <div className="details-container">
@@ -109,9 +157,11 @@ export const Register = () => {
             className="profile-input"
             value={values.repeatPassword}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-
-          {/* <p className="field">Passwords must match!</p> */}
+          {registerErrs.repeatPassword && (
+            <p className="field">{registerErrs.repeatPassword}</p>
+          )}
         </div>
 
         <input type="submit" value="REGISTER" className="btn" />

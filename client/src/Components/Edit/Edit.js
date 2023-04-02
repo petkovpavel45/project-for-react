@@ -1,7 +1,7 @@
 import "./styles/create.css";
 
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useService } from "../../hooks/useService";
 import { useForm } from "../../hooks/useForm";
@@ -24,6 +24,45 @@ export const Edit = () => {
     }
   );
 
+  const [editErrs, setEditErrs] = useState({
+    title: "",
+    description: "",
+    imageUrl: "",
+    price: "",
+  });
+
+  const pattern =
+    /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/gm;
+
+  const formValidate = (e) => {
+    const value = e.target.value;
+    const errors = {};
+
+    if (e.target.name === "title" && value.length < 3) {
+      errors.title = "Title must be at least 3 characters long!";
+    }
+
+    if (e.target.name === "description" && value.length < 6) {
+      errors.description = "Description must be at least 6 characters long!";
+    }
+
+    if (e.target.name === "imageUrl") {
+      const result = pattern.exec(value);
+      if (result === null) {
+        errors.imageUrl = "Please provide valid URL";
+      }
+    }
+
+    if (e.target.name === "price") {
+      const isString = Number.isNaN(Number(value));
+      if (isString) {
+        errors.price = "Price need to be a number!";
+      }
+    }
+
+    setEditErrs(errors);
+  };
+
   useEffect(() => {
     productService.getOne(productId).then((result) => {
       changeValues(result);
@@ -43,9 +82,9 @@ export const Edit = () => {
             id="title"
             value={values.title}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-
-          {/* <p className="field">Title must be at least 3 characters long!</p> */}
+          {editErrs.title && <p className="field">{editErrs.title}</p>}
         </div>
 
         <div className="details-container">
@@ -57,11 +96,11 @@ export const Edit = () => {
             id="description"
             value={values.description}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-
-          {/* <p className="field">
-              Description must be at least 6 characters long!
-            </p> */}
+          {editErrs.description && (
+            <p className="field">{editErrs.description}</p>
+          )}
         </div>
 
         <div className="details-container">
@@ -73,9 +112,11 @@ export const Edit = () => {
             id="imageUrl"
             value={values.imageUrl}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-
-          <p className="field">Please provide valid URL!</p>
+          {editErrs.imageUrl && (
+            <p className="field">Please provide valid URL!</p>
+          )}
         </div>
 
         <div className="details-container">
@@ -87,8 +128,11 @@ export const Edit = () => {
             id="price"
             value={values.price}
             onChange={changeHandler}
+            onBlur={formValidate}
           />
-          {/* <p className="field">Price need to be a number!</p> */}
+          {editErrs.price && (
+            <p className="field">Price need to be a number!</p>
+          )}
         </div>
 
         <input type="submit" value="SAVE" className="btn" />

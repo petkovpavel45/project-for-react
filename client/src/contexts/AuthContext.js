@@ -8,6 +8,8 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useLocalStorage("auth", {});
+  const [errors, setErrors] = useState([]);
+
   const navigate = useNavigate();
 
   const authService = authServiceFactory(auth.accessToken);
@@ -24,7 +26,7 @@ export const AuthProvider = ({ children }) => {
   const onRegisterSubmit = async (data) => {
     const { repeatPassword, ...registerData } = data;
     if (repeatPassword !== registerData.password) {
-      return;
+      setErrors(state => state.push('Passwords dont match!'))
     }
 
     try {
