@@ -29,6 +29,7 @@ import { Edit } from "./Components/Edit/Edit";
 import { Footer } from "./Components/Footer/Footer";
 import { CartProvider } from "./contexts/CartContext";
 import { Completed } from "./Components/Completed/Completed";
+import { LoggedGuard } from "./Components/Guards/LoggedGuard";
 function App() {
   return (
     <AuthProvider>
@@ -38,8 +39,10 @@ function App() {
             <Header />
             <Routes>
               <Route path="/" element={<Hero />} />
+              <Route element = {<LoggedGuard />}>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              </Route>
               <Route path="/products" element={<Products />} />
               <Route path="/products/:productId" element={<Details />} />
               <Route path="/why-us" element={<WhyUs />} />

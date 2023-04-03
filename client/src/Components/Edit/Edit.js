@@ -24,43 +24,51 @@ export const Edit = () => {
     }
   );
 
-  const [editErrs, setEditErrs] = useState({
-    title: "",
-    description: "",
-    imageUrl: "",
-    price: "",
-  });
+  const [editErrs, setEditErrs] = useState({});
 
   const pattern =
     /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/gm;
 
   const formValidate = (e) => {
     const value = e.target.value;
-    const errors = {};
 
-    if (e.target.name === "title" && value.length < 3) {
-      errors.title = "Title must be at least 3 characters long!";
+    if (e.target.name === "title") {
+      let titleErr = "";
+      if (value.length < 3) {
+        titleErr = "Title must be at least 6 characters long!";
+        setEditErrs((state) => ({ ...state, titleErr }));
+      }
+      setEditErrs((state) => ({ ...state, titleErr }));
     }
 
-    if (e.target.name === "description" && value.length < 6) {
-      errors.description = "Description must be at least 6 characters long!";
+    if (e.target.name === "description") {
+      let descriptionErr = "";
+      if (value.length < 6) {
+        descriptionErr = "Description must be at least 6 characters long!";
+        setEditErrs((state) => ({ ...state, descriptionErr }));
+      }
+      setEditErrs((state) => ({ ...state, descriptionErr }));
     }
 
     if (e.target.name === "imageUrl") {
       const result = pattern.exec(value);
+      let imageUrlErr = "";
       if (result === null) {
-        errors.imageUrl = "Please provide valid URL";
+        imageUrlErr = "Please provide valid URL";
+        setEditErrs((state) => ({ ...state, imageUrlErr }));
       }
+      setEditErrs((state) => ({ ...state, imageUrlErr }));
     }
 
     if (e.target.name === "price") {
       const isString = Number.isNaN(Number(value));
+      let priceErr = "";
       if (isString) {
-        errors.price = "Price need to be a number!";
+        priceErr = "Price need to be a number!";
+        setEditErrs((state) => ({ ...state, priceErr }));
       }
+      setEditErrs((state) => ({ ...state, priceErr }));
     }
-
-    setEditErrs(errors);
   };
 
   useEffect(() => {
@@ -84,7 +92,7 @@ export const Edit = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {editErrs.title && <p className="field">{editErrs.title}</p>}
+          {editErrs.titleErr && <p className="field">{editErrs.titleErr}</p>}
         </div>
 
         <div className="details-container">
@@ -98,8 +106,8 @@ export const Edit = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {editErrs.description && (
-            <p className="field">{editErrs.description}</p>
+          {editErrs.descriptionErr && (
+            <p className="field">{editErrs.descriptionErr}</p>
           )}
         </div>
 
@@ -114,8 +122,8 @@ export const Edit = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {editErrs.imageUrl && (
-            <p className="field">Please provide valid URL!</p>
+          {editErrs.imageUrlErr && (
+            <p className="field">{editErrs.imageUrlErr}</p>
           )}
         </div>
 
@@ -130,8 +138,8 @@ export const Edit = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {editErrs.price && (
-            <p className="field">Price need to be a number!</p>
+          {editErrs.priceErr && (
+            <p className="field">{editErrs.priceErr}</p>
           )}
         </div>
 

@@ -7,19 +7,18 @@ import { useForm } from "../../hooks/useForm";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Login = () => {
-
-  const { onLoginSubmit } = useAuthContext();
+  const { onLoginSubmit, serverErrors } = useAuthContext();
   const { changeHandler, onSubmit, values } = useForm(onLoginSubmit, {
     email: "",
     password: "",
   });
-
 
   return (
     <section id="login">
       <form className="forms" method="POST" onSubmit={onSubmit}>
         <h2>Login</h2>
         <img src={profileLogo} alt="profileLogo" className="profile-img" />
+        {serverErrors.login && <p className="field" style={{textAlign: 'center'}}>{serverErrors.login}</p>}
         <div className="details-container">
           <label htmlFor="email">Email:</label>
           <input
@@ -31,8 +30,6 @@ export const Login = () => {
             value={values.email}
             onChange={changeHandler}
           />
-
-          {/* <p className="field">Email or Password is incorrect!</p> */}
         </div>
 
         <div className="details-container">
@@ -47,7 +44,6 @@ export const Login = () => {
             onChange={changeHandler}
           />
 
-          {/* <p className="field">Email or Password is incorrect!</p> */}
         </div>
 
         <input type="submit" value="LOGIN" className="btn" />

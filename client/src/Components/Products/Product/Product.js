@@ -1,18 +1,25 @@
-import '../styles/products.css'
+import "../styles/products.css";
 
 import { Link } from "react-router-dom";
+import { cartServiceFactory } from "../../../Services/cartService";
+import { useService } from "../../../hooks/useService";
+import { useCartContext } from "../../../contexts/CartContext";
 
-export const Product = ({
-  title,
-  imageUrl,
-  price,
-  _id
-}) => {
+export const Product = ({ title, imageUrl, price, _id, description }) => {
+  const { setItems, setTotal } = useCartContext();
+  const cartService = useService(cartServiceFactory);
+
+  const onAddItem = async () => {
+    const result = await cartService.addInCart({title, imageUrl, price, description});
+    setItems((state) => [...state, result]);
+    setTotal((oldPrice) => (oldPrice += Number(result.price)));
+  };
+
   return (
     <div className="product-card">
       <div className="img-wrapper">
         <img className="product-img" src={imageUrl} alt="p1" />
-        <button className="btn-cart">
+        <button onClick={onAddItem} className="btn-cart">
           <i className="fa-solid fa-cart-shopping"></i>
         </button>
       </div>

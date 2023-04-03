@@ -8,15 +8,8 @@ import { useAuthContext } from "../../contexts/AuthContext";
 import { useState } from "react";
 
 export const Register = () => {
-  const [registerErrs, setRegisterErrs] = useState({
-    email: "",
-    username: "",
-    phoneNumber: "",
-    address: "",
-    password: "",
-    repeatPassword: "",
-  });
-  const { onRegisterSubmit } = useAuthContext();
+  const { onRegisterSubmit, serverErrors } = useAuthContext();
+  const [registerErrs, setRegisterErrs] = useState({});
   const { changeHandler, onSubmit, values } = useForm(onRegisterSubmit, {
     email: "",
     username: "",
@@ -30,35 +23,61 @@ export const Register = () => {
 
   const formValidate = (e) => {
     const value = e.target.value;
-    const errors = {};
 
     if (e.target.name === "email") {
       let result = pattern.exec(value);
+      let emailErr = "";
       if (result === null) {
-        errors.email = "Please enter a valid email address!";
+        emailErr = "Please enter a valid email address!";
+        setRegisterErrs((state) => ({ ...state, emailErr }));
       }
+      setRegisterErrs((state) => ({ ...state, emailErr }));
     }
-    if (e.target.name === "username" && value.length < 6) {
-      errors.username = "Username must be at least 6 characters long!";
-    }
-
-    if (e.target.name === "phoneNumber" && value.length !== 10) {
-      errors.phoneNumber = "Phone number must be 10 digits!";
-    }
-
-    if (e.target.name === "address" && value.length < 4) {
-      errors.address = "Address must be at least 4 characters long!";
+    if (e.target.name === "username") {
+      let usernameErr = "";
+      if (value.length < 6) {
+        usernameErr = "Username must be at least 6 characters long!";
+        setRegisterErrs((state) => ({ ...state, usernameErr }));
+      }
+      setRegisterErrs((state) => ({ ...state, usernameErr }));
     }
 
-    if (e.target.name === "password" && value.length < 6) {
-      errors.password = "Password must be at least 6 characters long!";
+    if (e.target.name === "phoneNumber") {
+      let phoneNumberErr = "";
+      if (value.length !== 10) {
+        phoneNumberErr = "Phone number must be 10 digits!";
+        setRegisterErrs((state) => ({ ...state, phoneNumberErr }));
+      }
+      setRegisterErrs((state) => ({ ...state, phoneNumberErr }));
     }
 
-    if (e.target.name === "repeatPassword" && value !== values.password) {
-      errors.repeatPassword = "Passwords must match!";
+    if (e.target.name === "address") {
+      let addressErr = "";
+      if (value.length < 4) {
+        addressErr = "Address must be at least 4 characters long!";
+        setRegisterErrs((state) => ({ ...state, addressErr }));
+      }
+      setRegisterErrs((state) => ({ ...state, addressErr }));
     }
 
-    setRegisterErrs(errors);
+    if (e.target.name === "password") {
+      let passwordErr = "";
+
+      if (value.length < 6) {
+        passwordErr = "Password must be at least 6 characters long!";
+        setRegisterErrs((state) => ({ ...state, passwordErr }));
+      }
+      setRegisterErrs((state) => ({ ...state, passwordErr }));
+    }
+
+    if (e.target.name === "repeatPassword") {
+      let repeatPasswordErr = "";
+      if (value !== values.password) {
+        repeatPasswordErr = "Passwords must match!";
+        setRegisterErrs((state) => ({ ...state, repeatPasswordErr }));
+      }
+      setRegisterErrs((state) => ({ ...state, repeatPasswordErr }));
+    }
   };
 
   return (
@@ -66,6 +85,11 @@ export const Register = () => {
       <form className="register-form" method="POST" onSubmit={onSubmit}>
         <h2>Register</h2>
         <img src={profileLogo} alt="profileLogo" className="profile-img" />
+        {serverErrors.register && (
+          <p className="field" style={{ textAlign: "center" }}>
+            {serverErrors.register}
+          </p>
+        )}
         <div className="details-container">
           <label htmlFor="email">Email:</label>
           <input
@@ -78,7 +102,9 @@ export const Register = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {registerErrs.email && <p className="field">{registerErrs.email}</p>}
+          {registerErrs.emailErr && (
+            <p className="field">{registerErrs.emailErr}</p>
+          )}
         </div>
 
         <div className="details-container">
@@ -93,8 +119,8 @@ export const Register = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {registerErrs.username && (
-            <p className="field">{registerErrs.username}</p>
+          {registerErrs.usernameErr && (
+            <p className="field">{registerErrs.usernameErr}</p>
           )}
         </div>
 
@@ -110,7 +136,9 @@ export const Register = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {registerErrs && <p className="field">{registerErrs.phoneNumber}</p>}
+          {registerErrs.phoneNumberErr && (
+            <p className="field">{registerErrs.phoneNumberErr}</p>
+          )}
         </div>
 
         <div className="details-container">
@@ -125,8 +153,8 @@ export const Register = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {registerErrs.address && (
-            <p className="field">{registerErrs.address}</p>
+          {registerErrs.addressErr && (
+            <p className="field">{registerErrs.addressErr}</p>
           )}
         </div>
 
@@ -142,8 +170,8 @@ export const Register = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {registerErrs.password && (
-            <p className="field">{registerErrs.password}</p>
+          {registerErrs.passwordErr && (
+            <p className="field">{registerErrs.passwordErr}</p>
           )}
         </div>
 
@@ -159,8 +187,8 @@ export const Register = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {registerErrs.repeatPassword && (
-            <p className="field">{registerErrs.repeatPassword}</p>
+          {registerErrs.repeatPasswordErr && (
+            <p className="field">{registerErrs.repeatPasswordErr}</p>
           )}
         </div>
 

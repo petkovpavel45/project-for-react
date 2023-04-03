@@ -13,45 +13,53 @@ export const Create = () => {
     price: "",
   });
 
-  const [createErrs, setCreateErrs] = useState({
-    title: "",
-    description: "",
-    imageUrl: "",
-    price: "",
-
-  });
+  const [createErrs, setCreateErrs] = useState({});
 
   const pattern =
     /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/gm;
 
   const formValidate = (e) => {
     const value = e.target.value;
-    const errors = {};
 
-    if (e.target.name === "title" && value.length < 3) {
-      errors.title = "Title must be at least 6 characters long!";
+    if (e.target.name === "title") {
+      let titleErr = "";
+      if (value.length < 3) {
+        titleErr = "Title must be at least 6 characters long!";
+        setCreateErrs((state) => ({ ...state, titleErr }));
+      }
+      setCreateErrs((state) => ({ ...state, titleErr }));
     }
 
-    if (e.target.name === "description" && value.length < 6) {
-      errors.description = "Description must be at least 6 characters long!";
+    if (e.target.name === "description") {
+      let descriptionErr = "";
+      if (value.length < 6) {
+        descriptionErr = "Description must be at least 6 characters long!";
+        setCreateErrs((state) => ({ ...state, descriptionErr }));
+      }
+      setCreateErrs((state) => ({ ...state, descriptionErr }));
     }
 
     if (e.target.name === "imageUrl") {
       const result = pattern.exec(value);
+      let imageUrlErr = "";
       if (result === null) {
-        errors.imageUrl = "Please provide valid URL";
+        imageUrlErr = "Please provide valid URL";
+        setCreateErrs((state) => ({ ...state, imageUrlErr }));
       }
+      setCreateErrs((state) => ({ ...state, imageUrlErr }));
     }
 
     if (e.target.name === "price") {
-      const isString = Number.isNaN(Number(value))
+      const isString = Number.isNaN(Number(value));
+      let priceErr = "";
       if (isString) {
-        errors.price = "Price need to be a number!";
+        priceErr = "Price need to be a number!";
+        setCreateErrs((state) => ({ ...state, priceErr }));
       }
+      setCreateErrs((state) => ({ ...state, priceErr }));
     }
-
-    setCreateErrs(errors);
   };
+
   return (
     <section id="create-product">
       <form className="create-form" method="POST" onSubmit={onSubmit}>
@@ -67,7 +75,9 @@ export const Create = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {createErrs.title && <p className="field">{createErrs.title}</p>}
+          {createErrs.titleErr && (
+            <p className="field">{createErrs.titleErr}</p>
+          )}
         </div>
 
         <div className="details-container">
@@ -81,8 +91,8 @@ export const Create = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {createErrs.description && (
-            <p className="field">{createErrs.description}</p>
+          {createErrs.descriptionErr && (
+            <p className="field">{createErrs.descriptionErr}</p>
           )}
         </div>
 
@@ -97,8 +107,8 @@ export const Create = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {createErrs.imageUrl && (
-            <p className="field">{createErrs.imageUrl}</p>
+          {createErrs.imageUrlErr && (
+            <p className="field">{createErrs.imageUrlErr}</p>
           )}
         </div>
 
@@ -113,7 +123,9 @@ export const Create = () => {
             onChange={changeHandler}
             onBlur={formValidate}
           />
-          {createErrs.price && <p className="field">{createErrs.price}</p>}
+          {createErrs.priceErr && (
+            <p className="field">{createErrs.priceErr}</p>
+          )}
         </div>
 
         <input type="submit" value="CREATE" className="btn" />

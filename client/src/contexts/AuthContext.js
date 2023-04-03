@@ -8,8 +8,8 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useLocalStorage("auth", {});
-  const [errors, setErrors] = useState([]);
-
+  const [serverErrors, setServerErrs] = useState({});
+  let errors = {};
   const navigate = useNavigate();
 
   const authService = authServiceFactory(auth.accessToken);
@@ -20,13 +20,14 @@ export const AuthProvider = ({ children }) => {
       setAuth(result);
       navigate("/products");
     } catch (error) {
-      console.log(`Error => ${error}`);
+      errors.login = error
+      setServerErrs(errors)
     }
   };
   const onRegisterSubmit = async (data) => {
     const { repeatPassword, ...registerData } = data;
     if (repeatPassword !== registerData.password) {
-      setErrors(state => state.push('Passwords dont match!'))
+      setServerErrs(state => ({...state, error: 'Passwords must match!'}))
     }
 
     try {
@@ -34,7 +35,9 @@ export const AuthProvider = ({ children }) => {
       setAuth(result);
       navigate("/products");
     } catch (error) {
-      console.log(`Error => ${error}`);
+      errors.register = error
+      setServerErrs(errors)
+      
     }
   };
   const onLogout = async () => {
@@ -52,6 +55,7 @@ export const AuthProvider = ({ children }) => {
     isAuthenticated: !!auth.accessToken,
     phoneNumber: auth.phoneNumber,
     username: auth.username,
+    serverErrors
   };
 
   return (

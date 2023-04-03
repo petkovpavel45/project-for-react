@@ -34,7 +34,7 @@ const requester = async (method, url, data) => {
   const result = await response.json();
 
   if (!response.ok) {
-      throw result;
+      throw result.message;
   }
 
   return result;
