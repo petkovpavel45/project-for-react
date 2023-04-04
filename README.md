@@ -27,7 +27,7 @@ SPA project - React for FE, softuni-practice-server for BE
 - npm start
 - Which opens the app at http://localhost:3000 in your browser.
 
-### Also should run REST_API server.
+#### Also should run REST_API server.
 
 - Open directory "server", open inside termianl and run:
 - node .\server.js
