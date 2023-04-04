@@ -2,6 +2,7 @@
 
 SPA project - React for FE, softuni-practice-server for BE
 
+![](/homepage.png)
 ## Info
 
 - The app works as platform for creating fitness equipment and order it with basic functionality.
