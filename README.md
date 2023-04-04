@@ -10,14 +10,14 @@ SPA project - React for FE, softuni-practice-server for BE
 
 ## TechStack
 
-# Client
+### Client
 - React
 
-# Server
+### Server
 - https://github.com/softuni-practice-server/softuni-practice-server
 
-# Setup
-### To run the app, in directory "Client",  open terminal and run:
+### Setup
+#### To run the app, in directory "Client",  open terminal and run:
 - npm install
 - npm start
 Which opens the app at http://localhost:3000 in your browser.
