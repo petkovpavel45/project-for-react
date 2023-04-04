@@ -4,13 +4,29 @@ import { Link } from "react-router-dom";
 import { cartServiceFactory } from "../../../Services/cartService";
 import { useService } from "../../../hooks/useService";
 import { useCartContext } from "../../../contexts/CartContext";
+import { useAuthContext } from "../../../contexts/AuthContext";
 
-export const Product = ({ title, imageUrl, price, _id, description }) => {
+export const Product = ({
+  title,
+  imageUrl,
+  price,
+  _id,
+  description,
+  _ownerId,
+}) => {
   const { setItems, setTotal } = useCartContext();
   const cartService = useService(cartServiceFactory);
-
+  const { userId } = useAuthContext();
   const onAddItem = async () => {
-    const result = await cartService.addInCart({title, imageUrl, price, description});
+    if (_ownerId === userId) {
+      return;
+    }
+    const result = await cartService.addInCart({
+      title,
+      imageUrl,
+      price,
+      description,
+    });
     setItems((state) => [...state, result]);
     setTotal((oldPrice) => (oldPrice += Number(result.price)));
   };

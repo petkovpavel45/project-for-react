@@ -3,10 +3,12 @@ import logo from './images/logo.png'
 import './styles/header.css'
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useCartContext } from "../../contexts/CartContext";
 
-export const Header = () => {
-  const { username, isAuthenticated, userId } = useAuthContext()
 
+export const Header = ({cartClicked}) => {
+  const { username, isAuthenticated, userId } = useAuthContext();
+  const {total} = useCartContext();
   return (
     <header id="header">
       <div className="logo-container">
@@ -60,13 +62,14 @@ export const Header = () => {
             )}
           </div>
         </li>
-        <li>
-          <Link to="/payment">
+        <li className='total-Price'>
+          <Link onClick={cartClicked}>
             <i className="fa-solid fa-cart-shopping"></i>
+            <span>${total.toFixed(2)}</span>
           </Link>
         </li>
         <li>
-          <Link to="">
+          <Link to="#">
             <i className="fa-solid fa-magnifying-glass"></i>
           </Link>
         </li>

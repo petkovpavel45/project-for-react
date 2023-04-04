@@ -70,11 +70,7 @@
 }
 
 #cart .trash {
-    all: unset;
-    display: block;
     text-align: right;
-    cursor: pointer;
-    width: 100%;
 }
 
 #cart .fa-trash:hover {

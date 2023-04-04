@@ -71,3 +71,7 @@
 #header .dropdown-user ul li {
     margin-bottom: 6px;
 }
+
+#header .total-Price i{
+    margin-right: 6px;
+}

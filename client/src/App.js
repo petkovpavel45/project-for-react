@@ -30,18 +30,27 @@ import { Footer } from "./Components/Footer/Footer";
 import { CartProvider } from "./contexts/CartContext";
 import { Completed } from "./Components/Completed/Completed";
 import { LoggedGuard } from "./Components/Guards/LoggedGuard";
+import { useState } from "react";
 function App() {
+  const [isCartClicked, setCartClicked] = useState(false);
+  const cartClicked = () => {
+    setCartClicked(true);
+  };
+  const cartClosed = () => {
+    setCartClicked(false);
+  }
   return (
     <AuthProvider>
       <ProductProvider>
         <CartProvider>
           <main className="container">
-            <Header />
+            {isCartClicked && <Payment cartClosed={cartClosed} />}
+            <Header cartClicked={cartClicked} />
             <Routes>
               <Route path="/" element={<Hero />} />
-              <Route element = {<LoggedGuard />}>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route element={<LoggedGuard />}>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
               </Route>
               <Route path="/products" element={<Products />} />
               <Route path="/products/:productId" element={<Details />} />
@@ -60,7 +69,6 @@ function App() {
                     </ProductOwner>
                   }
                 />
-                <Route path="/payment" element={<Payment />} />
               </Route>
               <Route path="*" element={<Hero />} />
             </Routes>

@@ -4,9 +4,13 @@ import { cartServiceFactory } from "../Services/cartService";
 export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
-  const [total, setTotal] = useState(0);
+  let [total, setTotal] = useState(0);
   const cartService = useService(cartServiceFactory);
-  
+
+  if (total < 0) {
+    setTotal(0)
+  }
+
   useEffect(() => {
     cartService.getAll().then((result) => {
       setItems(result);
@@ -25,7 +29,7 @@ export const CartProvider = ({ children }) => {
     setItems,
     deleteItem,
     total,
-    setTotal
+    setTotal,
   };
 
   return (

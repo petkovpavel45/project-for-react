@@ -4,7 +4,7 @@ import { Item } from "./Item";
 import { useCartContext } from "../../contexts/CartContext";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-export const Payment = () => {
+export const Payment = ({cartClosed}) => {
   const { items, total, setItems, setTotal } = useCartContext();
   const { userId } = useAuthContext();
   let ownerItems = items.filter((x) => x._ownerId === userId);
@@ -14,10 +14,20 @@ export const Payment = () => {
     setTotal(0)
     navigate('/completed')
   }
-  // ownerItems.push(total);
+  const onOrderAndClose = () => {
+    onOrderClick();
+    cartClosed();
+  }
+
+  const isDisabled = () => {
+    if (total === 0) {
+      return true
+    };
+    return false
+  }
   return (
     <div className="overlay-payment">
-      <div className="backdrop"></div>
+      <div className="backdrop" onClick={cartClosed} />
       <div className="modal">
         <section id="cart">
           <h2 className="cart-title">
@@ -31,7 +41,7 @@ export const Payment = () => {
               <Item key={x._id} {...x} />
             ))}
           </div>
-          <button onClick={onOrderClick} className="order-btn">ORDER NOW</button>
+          <button onClick={onOrderAndClose} disabled={isDisabled()} className="order-btn">ORDER NOW</button>
         </section>
       </div>
     </div>

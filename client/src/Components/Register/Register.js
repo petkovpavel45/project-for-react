@@ -18,14 +18,15 @@ export const Register = () => {
     password: "",
     repeatPassword: "",
   });
-  const pattern =
+  const emailPattern =
     /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+  const phoneNumberPattern = /^((\+359)|0)?(87|88|89)(\d{7})$/
 
   const formValidate = (e) => {
     const value = e.target.value;
 
     if (e.target.name === "email") {
-      let result = pattern.exec(value);
+      let result = emailPattern.exec(value);
       let emailErr = "";
       if (result === null) {
         emailErr = "Please enter a valid email address!";
@@ -43,9 +44,10 @@ export const Register = () => {
     }
 
     if (e.target.name === "phoneNumber") {
+      let result = phoneNumberPattern.exec(value);
       let phoneNumberErr = "";
-      if (value.length !== 10) {
-        phoneNumberErr = "Phone number must be 10 digits!";
+      if (result === null) {
+        phoneNumberErr = "Please enter a valid Phone number!";
         setRegisterErrs((state) => ({ ...state, phoneNumberErr }));
       }
       setRegisterErrs((state) => ({ ...state, phoneNumberErr }));

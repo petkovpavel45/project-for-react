@@ -15,7 +15,7 @@ export const Create = () => {
 
   const [createErrs, setCreateErrs] = useState({});
 
-  const pattern =
+  const imageUrlPattern =
     /(https:\/\/)([^\s(["<,>/]*)(\/)[^\s[",><]*(.png|.jpg)(\?[^\s[",><]*)?/gm;
 
   const formValidate = (e) => {
@@ -40,7 +40,7 @@ export const Create = () => {
     }
 
     if (e.target.name === "imageUrl") {
-      const result = pattern.exec(value);
+      const result = imageUrlPattern.exec(value);
       let imageUrlErr = "";
       if (result === null) {
         imageUrlErr = "Please provide valid URL";

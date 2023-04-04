@@ -11,7 +11,7 @@ export const Item = ({
     _id
 }) => {
   const cartService = useService(cartServiceFactory);
-  const {deleteItem, setTotal} = useCartContext();
+  let {deleteItem, setTotal} = useCartContext();
   const onDeleteClick = async () => {
     // eslint-disable-next-line no-restricted-globals
     const result = confirm(`Are you sure you want to delete ${title}`);
@@ -32,9 +32,9 @@ export const Item = ({
             {description}
           </p>
           <p className="item-price">${price}</p>
-          <button onClick={onDeleteClick} className="trash">
-            <i className="fa-solid fa-trash"></i>
-          </button>
+          <div className="trash">
+            <i onClick={onDeleteClick} className="fa-solid fa-trash"></i>
+          </div>
         </div>
         <hr />
       </div>
