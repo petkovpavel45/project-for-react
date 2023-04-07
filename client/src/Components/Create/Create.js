@@ -24,7 +24,7 @@ export const Create = () => {
     if (e.target.name === "title") {
       let titleErr = "";
       if (value.length < 3) {
-        titleErr = "Title must be at least 6 characters long!";
+        titleErr = "Title must be at least 3 characters long!";
         setCreateErrs((state) => ({ ...state, titleErr }));
       }
       setCreateErrs((state) => ({ ...state, titleErr }));
@@ -74,6 +74,7 @@ export const Create = () => {
             value={values.title}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="title"
           />
           {createErrs.titleErr && (
             <p className="field">{createErrs.titleErr}</p>
@@ -90,6 +91,7 @@ export const Create = () => {
             value={values.description}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="description"
           />
           {createErrs.descriptionErr && (
             <p className="field">{createErrs.descriptionErr}</p>
@@ -106,6 +108,7 @@ export const Create = () => {
             value={values.imageUrl}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="imageUrl"
           />
           {createErrs.imageUrlErr && (
             <p className="field">{createErrs.imageUrlErr}</p>
@@ -122,6 +125,7 @@ export const Create = () => {
             value={values.price}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="imageUrl"
           />
           {createErrs.priceErr && (
             <p className="field">{createErrs.priceErr}</p>

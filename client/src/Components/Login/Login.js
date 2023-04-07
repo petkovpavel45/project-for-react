@@ -18,7 +18,7 @@ export const Login = () => {
       <form className="forms" method="POST" onSubmit={onSubmit}>
         <h2>Login</h2>
         <img src={profileLogo} alt="profileLogo" className="profile-img" />
-        {serverErrors.login && <p className="field" style={{textAlign: 'center'}}>{serverErrors.login}</p>}
+        {serverErrors.login && <p  data-testid="errorTest" className="field" style={{textAlign: 'center'}}>{serverErrors.login}</p>}
         <div className="details-container">
           <label htmlFor="email">Email:</label>
           <input
@@ -29,6 +29,7 @@ export const Login = () => {
             className="profile-input"
             value={values.email}
             onChange={changeHandler}
+            data-testid="email"
           />
         </div>
 
@@ -42,11 +43,12 @@ export const Login = () => {
             className="profile-input"
             value={values.password}
             onChange={changeHandler}
+            data-testid="password"
           />
 
         </div>
 
-        <input type="submit" value="LOGIN" className="btn" />
+        <input type="submit" data-testid="login" value="LOGIN" className="btn" />
 
         <p>
           <span>

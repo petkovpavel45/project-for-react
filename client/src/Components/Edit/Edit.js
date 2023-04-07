@@ -91,6 +91,7 @@ export const Edit = () => {
             value={values.title}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="titleTest"
           />
           {editErrs.titleErr && <p className="field">{editErrs.titleErr}</p>}
         </div>
@@ -105,6 +106,7 @@ export const Edit = () => {
             value={values.description}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="titleTest"
           />
           {editErrs.descriptionErr && (
             <p className="field">{editErrs.descriptionErr}</p>

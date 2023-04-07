@@ -87,9 +87,9 @@ export const Register = () => {
       <form className="register-form" method="POST" onSubmit={onSubmit}>
         <h2>Register</h2>
         <img src={profileLogo} alt="profileLogo" className="profile-img" />
-        {serverErrors.register && (
+        {serverErrors?.register && (
           <p className="field" style={{ textAlign: "center" }}>
-            {serverErrors.register}
+            {serverErrors?.register}
           </p>
         )}
         <div className="details-container">
@@ -103,9 +103,10 @@ export const Register = () => {
             value={values.email}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="email"
           />
-          {registerErrs.emailErr && (
-            <p className="field">{registerErrs.emailErr}</p>
+          {registerErrs?.emailErr && (
+            <p data-testid="emailError" className="field">{registerErrs?.emailErr}</p>
           )}
         </div>
 
@@ -120,9 +121,10 @@ export const Register = () => {
             value={values.username}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="username"
           />
-          {registerErrs.usernameErr && (
-            <p className="field">{registerErrs.usernameErr}</p>
+          {registerErrs?.usernameErr && (
+            <p data-testid="usernameError" className="field">{registerErrs?.usernameErr}</p>
           )}
         </div>
 
@@ -137,9 +139,10 @@ export const Register = () => {
             value={values.phoneNumber}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="phoneNumber"
           />
-          {registerErrs.phoneNumberErr && (
-            <p className="field">{registerErrs.phoneNumberErr}</p>
+          {registerErrs?.phoneNumberErr && (
+            <p data-testid="phoneNumberError" className="field">{registerErrs?.phoneNumberErr}</p>
           )}
         </div>
 
@@ -154,9 +157,10 @@ export const Register = () => {
             value={values.address}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="address"
           />
-          {registerErrs.addressErr && (
-            <p className="field">{registerErrs.addressErr}</p>
+          {registerErrs?.addressErr && (
+            <p data-testid="addressError" className="field">{registerErrs?.addressErr}</p>
           )}
         </div>
 
@@ -171,9 +175,10 @@ export const Register = () => {
             value={values.password}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="password"
           />
-          {registerErrs.passwordErr && (
-            <p className="field">{registerErrs.passwordErr}</p>
+          {registerErrs?.passwordErr && (
+            <p data-testid="passwordError" className="field">{registerErrs?.passwordErr}</p>
           )}
         </div>
 
@@ -188,13 +193,14 @@ export const Register = () => {
             value={values.repeatPassword}
             onChange={changeHandler}
             onBlur={formValidate}
+            data-testid="repeatPassword"
           />
-          {registerErrs.repeatPasswordErr && (
-            <p className="field">{registerErrs.repeatPasswordErr}</p>
+          {registerErrs?.repeatPasswordErr && (
+            <p data-testid="repeatPassError" className="field">{registerErrs?.repeatPasswordErr}</p>
           )}
         </div>
 
-        <input type="submit" value="REGISTER" className="btn" />
+        <input type="submit" data-testid="REGISTER" value="REGISTER" className="btn" />
 
         <p>
           <span>

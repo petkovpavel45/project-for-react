@@ -60,6 +60,7 @@ a {
 }
 
 .profile-input {
+    width: 160px;
     margin-left: 10px;
     border-radius: 12px;
     padding: 2px 10px;
