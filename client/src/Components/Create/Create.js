@@ -77,7 +77,7 @@ export const Create = () => {
             data-testid="title"
           />
           {createErrs.titleErr && (
-            <p className="field">{createErrs.titleErr}</p>
+            <p data-testid="titleError" className="field">{createErrs.titleErr}</p>
           )}
         </div>
 
@@ -94,7 +94,7 @@ export const Create = () => {
             data-testid="description"
           />
           {createErrs.descriptionErr && (
-            <p className="field">{createErrs.descriptionErr}</p>
+            <p data-testid="descriptionError" className="field">{createErrs.descriptionErr}</p>
           )}
         </div>
 
@@ -111,7 +111,7 @@ export const Create = () => {
             data-testid="imageUrl"
           />
           {createErrs.imageUrlErr && (
-            <p className="field">{createErrs.imageUrlErr}</p>
+            <p data-testid="imageUrlError" className="field">{createErrs.imageUrlErr}</p>
           )}
         </div>
 
@@ -125,14 +125,14 @@ export const Create = () => {
             value={values.price}
             onChange={changeHandler}
             onBlur={formValidate}
-            data-testid="imageUrl"
+            data-testid="price"
           />
           {createErrs.priceErr && (
-            <p className="field">{createErrs.priceErr}</p>
+            <p data-testid="priceError" className="field">{createErrs.priceErr}</p>
           )}
         </div>
 
-        <input type="submit" value="CREATE" className="btn" />
+        <input type="submit" value="CREATE" data-testid="create" className="btn" />
       </form>
     </section>
   );
