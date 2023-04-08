@@ -31,6 +31,7 @@ import { CartProvider } from "./contexts/CartContext";
 import { Completed } from "./Components/Completed/Completed";
 import { LoggedGuard } from "./Components/Guards/LoggedGuard";
 import { useState } from "react";
+import { Search } from "./Components/Search/Search";
 function App() {
   const [isCartClicked, setCartClicked] = useState(false);
   const cartClicked = () => {
@@ -48,6 +49,7 @@ function App() {
             <Header cartClicked={cartClicked} />
             <Routes>
               <Route path="/" element={<Hero />} />
+              <Route path="/search" element={<Search />} />
               <Route element={<LoggedGuard />}>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />

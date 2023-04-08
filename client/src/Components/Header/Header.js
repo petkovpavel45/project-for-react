@@ -68,7 +68,7 @@ export const Header = ({ cartClicked }) => {
           </Link>
         </li>
         <li>
-          <Link to="#">
+          <Link to="/search">
             <i className="fa-solid fa-magnifying-glass"></i>
           </Link>
         </li>
