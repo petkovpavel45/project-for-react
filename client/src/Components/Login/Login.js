@@ -18,7 +18,7 @@ export const Login = () => {
       <form className="forms" method="POST" onSubmit={onSubmit}>
         <h2>Login</h2>
         <img src={profileLogo} alt="profileLogo" className="profile-img" />
-        {serverErrors.login && <p  data-testid="errorTest" className="field" style={{textAlign: 'center'}}>{serverErrors.login}</p>}
+        {serverErrors?.login && <p  data-testid="errorTest" className="field" style={{textAlign: 'center'}}>{serverErrors?.login}</p>}
         <div className="details-container">
           <label htmlFor="email">Email:</label>
           <input

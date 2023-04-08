@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
       const result = await authService.login(data);
       setAuth(result);
       navigate("/products");
+      setServerErrs(null)
     } catch (error) {
       errors.login = error
       setServerErrs(errors)
@@ -33,6 +34,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const result = await authService.register(registerData);
       setAuth(result);
+      setServerErrs(null)
       navigate("/products");
     } catch (error) {
       errors.register = error
