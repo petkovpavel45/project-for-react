@@ -9,6 +9,7 @@ SPA project - React for FE, softuni-practice-server for BE
 - Every user(not logged in) have access to : Home, About Us, Why Us, Products, Search, Details, Register and Login.
 - Every logged in user have acces to: Home, About Us, Why Us, Products, Search, Details, Cart, Add Equipment, Edit(if he is the owner of the equipment) and Logout.
 - Every logged in user can add equipment and they automaticly are added to the Cart.
+- https://react-fitness-equipment.web.app/
 
 ## TechStack
 
