@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
     const { repeatPassword, ...registerData } = data;
     if (repeatPassword !== registerData.password) {
       setServerErrs(state => ({...state, error: 'Passwords must match!'}))
+      return;
     }
 
     try {
